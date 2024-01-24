@@ -41,11 +41,11 @@ class Cat:
             else:
                 self.v_matrices[key]=self.glued_result[row_min:row_max, col_min:col_max]
         return self
-    
+    '''
     def get_arrays(self,matrix1,matrix2):
         new_matrix = np.array([matrix1, matrix2])
         return new_matrix
-           
+    '''       
         
                 
         
@@ -59,7 +59,7 @@ class Cat:
         return self
     
     def evolve_n_steps(self, steps):
-        ht,hx,hy,Du,Dv=self.params["par"].values()[0:5]
+        ht,hx,hy,Du,Dv=list(self.params["par"].values())[0:5]
         for key in self.matrices:
             self.results_[key]=np.zeros((steps, self.matrices[key].shape()[0], self.matrices[key].shape()[1]))
             self.results_[key][0,:,:]=self.matrices[key]
@@ -141,3 +141,4 @@ x = Cat(params)
 #plt.imshow(x.glued_result)
 #plt.show()
 #print(x.matrices["head"])
+x.evolve_n_steps(10)
